@@ -160,17 +160,20 @@ body {
     width: 650px;
     font-size: 19px;
 }
-.cart{
+.cart {
     color: white;
     display: flex;
+    position: relative;
 }
-.cart_quantity_count{
-    margin-top: 16px;
-    /* background-color: red; */
-    margin-left: 27px;
-    position: absolute;
-    font-size: 29px;
 
+.cart_quantity_count {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .plantname_heading{
    display: flex;
