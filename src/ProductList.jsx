@@ -256,8 +256,15 @@ const handlePlantsClick = (e) => {
   };
 
   const handleAddToCart = (product) => {
-    dispatch(addItem(product))
-    setAddedToCart()
+    if(!cartContainsItem(product)) {
+        dispatch(addItem(product))
+        setAddedToCart()
+    }
+  }
+
+  const cartContainsItem = (item) => {
+    const found = cartItems.find(cartItem => cartItem.name === item.name)
+    return found ? true : false
   }
     return (
         <div>
@@ -302,7 +309,7 @@ const handlePlantsClick = (e) => {
                         <img className="product-image" src={plant.image} alt={plant.name} />
                         <div className="product-title">{plant.name}</div>
                         {/*Similarly like the above plant.name show other details like description and cost*/}
-                        <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                        <button className={`product-button ${cartContainsItem(plant) ? "added-to-cart" : ""}`}  onClick={() => handleAddToCart(plant)}>{cartContainsItem(plant) ? "Added to cart" : "Add to Cart"}</button>
                     </div>
                     ))}
                 </div>
